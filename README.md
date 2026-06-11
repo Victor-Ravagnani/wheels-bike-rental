@@ -75,7 +75,6 @@ Diagrama de sequência — Registrar Aluguel:
 
 ## 📸 Telas
 
-Os prints do sistema em execução ficam em `docs/prints/`.
 **Painel inicial** — resumo do acervo (bicicletas, clientes e aluguéis em aberto):
 
 ![Painel](docs/prints/print_telaInicial.png)
