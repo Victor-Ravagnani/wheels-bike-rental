@@ -76,6 +76,37 @@ Diagrama de sequência — Registrar Aluguel:
 ## 📸 Telas
 
 Os prints do sistema em execução ficam em `docs/prints/`.
+**Painel inicial** — resumo do acervo (bicicletas, clientes e aluguéis em aberto):
+
+![Painel](docs/prints/print_telaInicial.png)
+
+**Bicicletas** — acervo cadastrado, com tipo, valor por hora e estado:
+
+![Bicicletas](docs/prints/print_bicicletas.png)
+
+**Clientes** — cadastro com validação de CPF (mensagem de erro para CPF inválido):
+
+![Validação de CPF](docs/prints/print_erroCliente.png)
+
+**Registrar aluguel** — seleção de cliente, bicicletas e data de devolução:
+
+![Registrar aluguel](docs/prints/print_registrarAluguel.png)
+
+**Devolução e recibo** — cálculo automático do valor, multa e desconto, com emissão do recibo:
+
+![Devolução e recibo](docs/prints/print_registrarDevolucao.png)
+
+**Reservas** — reserva de bicicleta feita pelo cliente (autoatendimento):
+
+![Reservas](docs/prints/print_reserva.png)
+
+**Manutenção** — ordens de manutenção registradas pelo mecânico:
+
+![Manutenção](docs/prints/print_manutencao.png)
+
+**Aplicação em execução** — servidor ASP.NET rodando no terminal:
+
+![Terminal](docs/prints/print_terminal.png)
 
 ---
 
