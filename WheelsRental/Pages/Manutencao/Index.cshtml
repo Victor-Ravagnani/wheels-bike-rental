@@ -1,0 +1,31 @@
+@page
+@model WheelsRental.Pages.Manutencao.IndexModel
+@{
+    ViewData["Title"] = "Manutenção";
+}
+
+<h2>Ordens de manutenção</h2>
+<p><a class="btn" asp-page="Create">+ Registrar ordem</a></p>
+
+<table>
+    <tr><th>Id</th><th>Bicicleta</th><th>Mecânico</th><th>Descrição</th><th>Abertura</th><th>Status</th><th></th></tr>
+    @foreach (var o in Model.Ordens)
+    {
+        <tr>
+            <td>@o.Id</td>
+            <td>@Model.NomeBike(o.BicicletaId)</td>
+            <td>@Model.NomeMecanico(o.MecanicoId)</td>
+            <td>@o.Descricao</td>
+            <td>@o.DataAbertura.ToString("dd/MM/yyyy HH:mm")</td>
+            <td>@o.Status</td>
+            <td>
+                @if (o.Status != StatusManutencao.Concluida)
+                {
+                    <form method="post" asp-page-handler="Concluir" asp-route-id="@o.Id">
+                        <button class="btn" type="submit">Concluir</button>
+                    </form>
+                }
+            </td>
+        </tr>
+    }
+</table>

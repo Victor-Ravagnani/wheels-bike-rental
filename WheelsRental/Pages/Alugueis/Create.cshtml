@@ -1,0 +1,35 @@
+@page
+@model WheelsRental.Pages.Alugueis.CreateModel
+@{
+    ViewData["Title"] = "Registrar aluguel";
+}
+
+<h2>Registrar aluguel</h2>
+<div class="card">
+    @if (!string.IsNullOrEmpty(Model.Erro)) { <div class="msg" style="background:#fbeaea;border-color:#e0b6b6">@Model.Erro</div> }
+    <form method="post">
+        <label>Cliente</label>
+        <select asp-for="ClienteId">
+            @foreach (var c in Model.Clientes) { <option value="@c.Id">@c.Nome</option> }
+        </select>
+
+        <label>Funcionário responsável</label>
+        <select asp-for="FuncionarioId">
+            @foreach (var f in Model.Funcionarios) { <option value="@f.Id">@f.Nome (@f.Cargo)</option> }
+        </select>
+
+        <label>Bicicletas disponíveis (selecione uma ou mais)</label>
+        <select asp-for="BicicletaIds" multiple size="6">
+            @foreach (var b in Model.Disponiveis)
+            {
+                <option value="@b.Id">@b.Modelo — R$ @b.ValorHora.ToString("F2")/h (@b.Tipo)</option>
+            }
+        </select>
+
+        <label>Devolução prevista</label>
+        <input asp-for="DataPrevista" type="datetime-local" required />
+
+        <p style="margin-top:16px"><button class="btn" type="submit">Registrar aluguel</button>
+           <a class="btn" style="background:#888" asp-page="Index">Voltar</a></p>
+    </form>
+</div>

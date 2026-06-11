@@ -1,0 +1,22 @@
+@page
+@model WheelsRental.Pages.Clientes.CreateModel
+@{
+    ViewData["Title"] = "Registrar cliente";
+}
+
+<h2>Registrar cliente</h2>
+<div class="card">
+    @if (!string.IsNullOrEmpty(Model.Erro)) { <div class="msg" style="background:#fbeaea;border-color:#e0b6b6">@Model.Erro</div> }
+    <form method="post">
+        <label>Nome</label>
+        <input asp-for="Entrada.Nome" required />
+        <label>CPF (11 dígitos)</label>
+        <input asp-for="Entrada.Cpf" required />
+        <label>Telefone</label>
+        <input asp-for="Entrada.Telefone" />
+        <label>E-mail</label>
+        <input asp-for="Entrada.Email" type="email" />
+        <p style="margin-top:16px"><button class="btn" type="submit">Salvar</button>
+           <a class="btn" style="background:#888" asp-page="Index">Voltar</a></p>
+    </form>
+</div>

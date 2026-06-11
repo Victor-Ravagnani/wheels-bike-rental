@@ -1,0 +1,27 @@
+@page
+@model WheelsRental.Pages.Reservas.CreateModel
+@{
+    ViewData["Title"] = "Realizar reserva";
+}
+
+<h2>Realizar reserva</h2>
+<div class="card">
+    @if (!string.IsNullOrEmpty(Model.Erro)) { <div class="msg" style="background:#fbeaea;border-color:#e0b6b6">@Model.Erro</div> }
+    <form method="post">
+        <label>Cliente</label>
+        <select asp-for="ClienteId">
+            @foreach (var c in Model.Clientes) { <option value="@c.Id">@c.Nome</option> }
+        </select>
+
+        <label>Bicicleta disponível</label>
+        <select asp-for="BicicletaId">
+            @foreach (var b in Model.Disponiveis) { <option value="@b.Id">@b.Modelo (@b.Tipo)</option> }
+        </select>
+
+        <label>Data prevista para retirada</label>
+        <input asp-for="DataRetirada" type="datetime-local" required />
+
+        <p style="margin-top:16px"><button class="btn" type="submit">Reservar</button>
+           <a class="btn" style="background:#888" asp-page="Index">Voltar</a></p>
+    </form>
+</div>

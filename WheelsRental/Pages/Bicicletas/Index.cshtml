@@ -1,0 +1,27 @@
+@page
+@model WheelsRental.Pages.Bicicletas.IndexModel
+@{
+    ViewData["Title"] = "Bicicletas";
+}
+
+<h2>Bicicletas</h2>
+<p><a class="btn" asp-page="Create">+ Registrar bicicleta</a></p>
+
+<table>
+    <tr>
+        <th>Id</th><th>Modelo</th><th>Tipo</th><th>Estado</th>
+        <th>Valor/hora</th><th>Depósito</th><th>Especial</th>
+    </tr>
+    @foreach (var b in Model.Bicicletas)
+    {
+        <tr>
+            <td>@b.Id</td>
+            <td>@b.Modelo</td>
+            <td>@b.Tipo</td>
+            <td>@b.Estado</td>
+            <td>R$ @b.ValorHora.ToString("F2")</td>
+            <td>R$ @b.ValorDeposito.ToString("F2")</td>
+            <td>@(b.Especial ? "Sim" : "Não")</td>
+        </tr>
+    }
+</table>

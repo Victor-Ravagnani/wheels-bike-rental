@@ -1,0 +1,27 @@
+@page
+@model WheelsRental.Pages.Manutencao.CreateModel
+@{
+    ViewData["Title"] = "Registrar ordem de manutenção";
+}
+
+<h2>Registrar ordem de manutenção</h2>
+<div class="card">
+    @if (!string.IsNullOrEmpty(Model.Erro)) { <div class="msg" style="background:#fbeaea;border-color:#e0b6b6">@Model.Erro</div> }
+    <form method="post">
+        <label>Bicicleta</label>
+        <select asp-for="BicicletaId">
+            @foreach (var b in Model.Bicicletas) { <option value="@b.Id">@b.Modelo (@b.Estado)</option> }
+        </select>
+
+        <label>Mecânico responsável</label>
+        <select asp-for="MecanicoId">
+            @foreach (var m in Model.Mecanicos) { <option value="@m.Id">@m.Nome</option> }
+        </select>
+
+        <label>Descrição do serviço</label>
+        <input asp-for="Descricao" required />
+
+        <p style="margin-top:16px"><button class="btn" type="submit">Abrir ordem</button>
+           <a class="btn" style="background:#888" asp-page="Index">Voltar</a></p>
+    </form>
+</div>

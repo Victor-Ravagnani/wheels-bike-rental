@@ -1,0 +1,19 @@
+@page
+@model WheelsRental.Pages.Clientes.IndexModel
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h2>Clientes</h2>
+<p><a class="btn" asp-page="Create">+ Registrar cliente</a></p>
+
+<table>
+    <tr><th>Id</th><th>Nome</th><th>CPF</th><th>Telefone</th><th>E-mail</th><th>Pontos</th></tr>
+    @foreach (var c in Model.Clientes)
+    {
+        <tr>
+            <td>@c.Id</td><td>@c.Nome</td><td>@c.Cpf</td>
+            <td>@c.Telefone</td><td>@c.Email</td><td>@c.PontosFidelidade</td>
+        </tr>
+    }
+</table>

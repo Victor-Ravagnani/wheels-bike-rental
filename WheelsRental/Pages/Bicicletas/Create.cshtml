@@ -1,0 +1,30 @@
+@page
+@model WheelsRental.Pages.Bicicletas.CreateModel
+@{
+    ViewData["Title"] = "Registrar bicicleta";
+}
+
+<h2>Registrar bicicleta</h2>
+<div class="card">
+    <form method="post">
+        <label>Modelo</label>
+        <input asp-for="Entrada.Modelo" required />
+
+        <label>Tipo</label>
+        <select asp-for="Entrada.Tipo" asp-items="Html.GetEnumSelectList<TipoBicicleta>()"></select>
+
+        <label>Valor por hora (R$)</label>
+        <input asp-for="Entrada.ValorHora" type="number" step="0.01" required />
+
+        <label>Valor do depósito (R$)</label>
+        <input asp-for="Entrada.ValorDeposito" type="number" step="0.01" required />
+
+        <label><input asp-for="Entrada.Especial" type="checkbox" style="width:auto" /> Bicicleta especial</label>
+
+        <label>Restrições (opcional)</label>
+        <input asp-for="Entrada.Restricoes" />
+
+        <p style="margin-top:16px"><button class="btn" type="submit">Salvar</button>
+           <a class="btn" style="background:#888" asp-page="Index">Voltar</a></p>
+    </form>
+</div>

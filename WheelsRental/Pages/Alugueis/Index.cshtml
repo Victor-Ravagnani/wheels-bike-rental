@@ -1,0 +1,33 @@
+@page
+@model WheelsRental.Pages.Alugueis.IndexModel
+@{
+    ViewData["Title"] = "Aluguéis";
+}
+
+<h2>Aluguéis</h2>
+<p><a class="btn" asp-page="Create">+ Registrar aluguel</a></p>
+
+<table>
+    <tr>
+        <th>Id</th><th>Cliente</th><th>Início</th><th>Devolução prevista</th>
+        <th>Status</th><th>Multa</th><th>Valor total</th><th></th>
+    </tr>
+    @foreach (var a in Model.Alugueis)
+    {
+        <tr>
+            <td>@a.Id</td>
+            <td>@Model.NomeCliente(a.ClienteId)</td>
+            <td>@a.DataInicio.ToString("dd/MM/yyyy HH:mm")</td>
+            <td>@a.DataPrevistaDevolucao.ToString("dd/MM/yyyy HH:mm")</td>
+            <td>@a.Status</td>
+            <td>R$ @a.Multa.ToString("F2")</td>
+            <td>R$ @a.ValorTotal.ToString("F2")</td>
+            <td>
+                @if (a.Status == StatusAluguel.Aberto)
+                {
+                    <a class="btn" asp-page="Devolucao" asp-route-aluguelId="@a.Id">Devolver</a>
+                }
+            </td>
+        </tr>
+    }
+</table>

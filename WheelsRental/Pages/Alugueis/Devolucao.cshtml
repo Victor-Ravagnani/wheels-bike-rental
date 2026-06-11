@@ -1,0 +1,33 @@
+@page "{aluguelId:int}"
+@model WheelsRental.Pages.Alugueis.DevolucaoModel
+@{
+    ViewData["Title"] = "Registrar devolução";
+}
+
+<h2>Registrar devolução — Aluguel #@Model.AluguelId</h2>
+
+@if (Model.ReciboTexto is not null)
+{
+    <div class="msg">Devolução e pagamento registrados com sucesso.</div>
+    <div class="card"><pre style="white-space:pre-wrap;font-family:Consolas,monospace">@Model.ReciboTexto</pre></div>
+    <p><a class="btn" asp-page="Index">Voltar à lista</a></p>
+}
+else
+{
+    <div class="card">
+        <form method="post">
+            <input type="hidden" asp-for="AluguelId" />
+            <label>Data/hora da devolução</label>
+            <input asp-for="DataDevolucao" type="datetime-local" required />
+
+            <label>Forma de pagamento</label>
+            <select asp-for="Forma" asp-items="Html.GetEnumSelectList<FormaPagamento>()"></select>
+
+            <label>Valor pago (R$) — deixe em branco para quitar o total</label>
+            <input asp-for="ValorPago" type="number" step="0.01" />
+
+            <p style="margin-top:16px"><button class="btn" type="submit">Confirmar devolução</button>
+               <a class="btn" style="background:#888" asp-page="Index">Cancelar</a></p>
+        </form>
+    </div>
+}

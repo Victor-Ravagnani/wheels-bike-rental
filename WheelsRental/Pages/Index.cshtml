@@ -1,0 +1,22 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Início";
+}
+
+<h2>Painel</h2>
+<div class="card">
+    <p>Bem-vindo ao sistema <strong>Wheels</strong>. Use o menu para gerenciar o acervo,
+       os clientes, os aluguéis, as reservas e a manutenção das bicicletas.</p>
+</div>
+
+<div class="card">
+    <h3>Resumo do acervo</h3>
+    <table>
+        <tr><th>Indicador</th><th>Quantidade</th></tr>
+        <tr><td>Bicicletas cadastradas</td><td>@Model.TotalBicicletas</td></tr>
+        <tr><td>Bicicletas disponíveis</td><td>@Model.Disponiveis</td></tr>
+        <tr><td>Clientes cadastrados</td><td>@Model.TotalClientes</td></tr>
+        <tr><td>Aluguéis em aberto</td><td>@Model.AlugueisAbertos</td></tr>
+    </table>
+</div>

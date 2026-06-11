@@ -1,0 +1,17 @@
+# Build do .NET
+bin/
+obj/
+*.user
+*.suo
+
+# Pastas de IDE
+.vs/
+.vscode/
+.idea/
+
+# Dados gerados em tempo de execução (CSV)
+WheelsRental/App_Data/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
